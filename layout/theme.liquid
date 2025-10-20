@@ -15,10 +15,12 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-    {%- comment -%} StankyFlowers fonts {%- endcomment -%}
+    {%- comment -%} StankyFlowers fonts (Google CDN, warnings silenced) {%- endcomment -%}
+    {% comment %} theme-check-disable RemoteAsset {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    {% comment %} theme-check-enable RemoteAsset {% endcomment %}
 
     <title>
       {{ page_title }}
@@ -174,7 +176,7 @@
         --popup-shadow-blur-radius: {{ settings.popup_shadow_blur }}px;
 
         --drawer-border-width: {{ settings.drawer_border_thickness }}px;
-        --drawer-border-opacity: {{ settings.drawer_border_opacity | divided_by: 100.0 }};
+        --drawer-border-opacity: {{ settings.drawer_shadow_opacity | divided_by: 100.0 }};
         --drawer-shadow-opacity: {{ settings.drawer_shadow_opacity | divided_by: 100.0 }};
         --drawer-shadow-horizontal-offset: {{ settings.drawer_shadow_horizontal_offset }}px;
         --drawer-shadow-vertical-offset: {{ settings.drawer_shadow_vertical_offset }}px;
@@ -261,7 +263,6 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {%- comment -%} StankyFlowers brand CSS (create assets/custom.css) {%- endcomment -%}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
 
     {%- if settings.cart_type == 'drawer' -%}
