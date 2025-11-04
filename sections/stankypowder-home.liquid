@@ -6,43 +6,76 @@ Font: Bangers (optional load in theme.liquid)
 {% endcomment %}
 
 <section class="sf-home">
-  <style>
-    .sf-home { --sf-purple:#9B5DE5; --sf-green:#39FF14; --sf-dark:#101010; --sf-light:#f7f7f7; }
-    .sf-wrap { max-width: 1200px; margin: 0 auto; padding: clamp(20px, 4vw, 48px); }
-    .sf-hero { display:grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items:center; }
-    @media (max-width: 900px){ .sf-hero{ grid-template-columns: 1fr; } }
-    .sf-badge { display:inline-flex; gap:8px; align-items:center; background:var(--sf-dark); color:#fff; padding:8px 12px; border-radius:999px; font-weight:600; }
-    .sf-title { font-size: clamp(36px, 6vw, 64px); line-height:1.0; margin: 8px 0 12px; letter-spacing: -0.02em; }
-    .sf-title .accent { color: var(--sf-green); text-shadow: 0 2px 0 rgba(0,0,0,.12); }
-    .sf-sub { font-size: clamp(16px, 2.4vw, 20px); color:#333; }
-    .sf-cta { display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
-    .sf-btn { appearance:none; border:none; padding:14px 20px; border-radius:14px; font-weight:800; cursor:pointer; }
-    .sf-btn--primary { background: var(--sf-green); color:#081208; box-shadow: 0 8px 20px rgba(57,255,20,.25); }
-    .sf-btn--ghost { background: transparent; color:#111; border:2px solid #111; }
-    .sf-hero-media img { width:100%; height:auto; border-radius:20px; box-shadow: 0 18px 40px rgba(0,0,0,.15); }
-    .sf-kpis { display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top:18px; }
-    @media (max-width: 700px){ .sf-kpis{ grid-template-columns:1fr 1fr; } }
-    .sf-kpi { background: var(--sf-light); padding:14px; border-radius:14px; display:flex; gap:10px; align-items:center; }
-    .sf-kpi .dot{ width:10px; height:10px; background:var(--sf-green); border-radius:999px; }
-    .sf-values { display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:36px; }
-    @media (max-width: 900px){ .sf-values{ grid-template-columns:1fr; } }
-    .sf-card { background:#fff; border:1px solid #eee; border-radius:18px; padding:20px; }
-    .sf-card h3{ margin:0 0 6px; }
-    .sf-social { margin-top:36px; background:#111; color:#fff; border-radius:18px; padding:22px; display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; }
-    .sf-stars{ color:#FFD54A; letter-spacing:2px; font-size:18px; }
-    .sf-product { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:center; }
-    @media (max-width: 900px){ .sf-product{ grid-template-columns:1fr; } }
-    .sf-product .pnl{ background:var(--sf-light); padding:18px; border-radius:18px; }
-    .sf-note { font-size:12px; color:#666; margin-top:8px; }
-    .sf-news { margin-top:36px; background:linear-gradient(135deg, var(--sf-purple), var(--sf-green)); border-radius:18px; padding:22px; color:#081208; }
-    .sf-news form{ display:flex; gap:10px; flex-wrap:wrap; }
-    .sf-news input{ flex:1; min-width:220px; padding:14px 12px; border-radius:12px; border:none; }
-    .sf-news button{ padding:14px 18px; border:none; border-radius:12px; font-weight:800; background:#081208; color:#fff; }
-    .sf-faq { margin-top:36px; }
-    .sf-faq details { border:1px solid #e8e8e8; border-radius:14px; padding:14px 16px; margin-bottom:12px; background:#fff; }
-    .sf-faq summary{ cursor:pointer; font-weight:700; }
-    .sf-legal{ margin-top:14px; font-size:12px; color:#666; }
-  </style>
+<style>
+  /* ===== StankyFlowers Mobile-First ===== */
+  .sf-home{
+    --sf-purple:#9B5DE5; --sf-green:#39FF14; --sf-dark:#101010; --sf-light:#f7f7f7;
+    --pad: clamp(14px, 3.5vw, 22px);
+    --radius: 16px;
+  }
+  .sf-wrap{ max-width:1200px; margin:0 auto; padding:var(--pad); }
+
+  /* Typography tuned for phones first */
+  .sf-title{ font-size: clamp(28px, 9vw, 40px); line-height:1.02; margin:6px 0 8px; letter-spacing:-0.02em; }
+  .sf-title .accent{ color:var(--sf-green); text-shadow:0 1px 0 rgba(0,0,0,.08);}
+  .sf-sub{ font-size: clamp(15px, 3.8vw, 17px); color:#333; }
+
+  /* HERO: 1 column on mobile (image stacks under copy) */
+  .sf-hero{ display:grid; grid-template-columns:1fr; gap:14px; align-items:center; }
+  .sf-hero-media img{ width:100%; height:auto; border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.12); }
+
+  /* Badge + CTAs */
+  .sf-badge{ display:inline-flex; gap:8px; align-items:center; background:var(--sf-dark); color:#fff;
+    padding:7px 12px; border-radius:999px; font-weight:700; font-size:13px; }
+  .sf-cta{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .sf-btn{ appearance:none; border:none; padding:14px 18px; border-radius:14px; font-weight:800; cursor:pointer;
+    min-height:48px; line-height:1; }
+  .sf-btn--primary{ background:var(--sf-green); color:#081208; box-shadow:0 8px 18px rgba(57,255,20,.22); }
+  .sf-btn--ghost{ background:transparent; color:#111; border:2px solid #111; }
+
+  /* KPIs: horizontal scroll with snap on mobile */
+  .sf-kpis{ display:flex; gap:10px; overflow-x:auto; padding-bottom:2px; scroll-snap-type:x mandatory; }
+  .sf-kpi{ min-width:220px; background:var(--sf-light); padding:12px; border-radius:14px; display:flex; gap:10px; align-items:center; scroll-snap-align:start; }
+  .sf-kpi .dot{ width:10px; height:10px; background:var(--sf-green); border-radius:999px; }
+
+  /* Value cards: single column + scroll snap */
+  .sf-values{ display:flex; flex-direction:column; gap:12px; margin-top:20px; }
+  .sf-card{ background:#fff; border:1px solid #eee; border-radius:14px; padding:16px; }
+
+  /* Social proof block */
+  .sf-social{ margin-top:22px; background:#111; color:#fff; border-radius:14px; padding:16px; display:grid; gap:10px; }
+  .sf-stars{ color:#FFD54A; letter-spacing:2px; font-size:16px; }
+
+  /* Product panel: 1 column on mobile */
+  .sf-product{ margin-top:22px; display:grid; grid-template-columns:1fr; gap:12px; align-items:start; }
+  .sf-product .pnl{ background:var(--sf-light); padding:16px; border-radius:14px; }
+
+  /* Newsletter */
+  .sf-news{ margin-top:22px; background:linear-gradient(135deg,var(--sf-purple),var(--sf-green));
+    border-radius:14px; padding:16px; color:#081208; }
+  .sf-news form{ display:grid; grid-template-columns:1fr auto; gap:10px; }
+  .sf-news input{ padding:14px 12px; border-radius:12px; border:none; min-height:48px; }
+  .sf-news button{ padding:14px 18px; border:none; border-radius:12px; font-weight:800; min-height:48px; background:#081208; color:#fff; }
+  .sf-legal{ margin-top:8px; font-size:12px; color:#233; }
+
+  /* FAQ */
+  .sf-faq{ margin-top:22px; }
+  .sf-faq details{ border:1px solid #e8e8e8; border-radius:14px; padding:12px 14px; margin-bottom:10px; background:#fff; }
+  .sf-faq summary{ cursor:pointer; font-weight:700; }
+
+  /* ===== Desktop Enhancements (≥960px) ===== */
+  @media (min-width:960px){
+    .sf-title{ font-size: clamp(40px, 5.2vw, 64px); }
+    .sf-hero{ grid-template-columns: 1.2fr 1fr; gap:28px; }
+    .sf-values{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .sf-social{ padding:22px; grid-template-columns:1.2fr 1fr 1fr; align-items:center; }
+    .sf-product{ grid-template-columns:1fr 1fr; gap:18px; }
+  }
+  /* Motion safety */
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+</style>
 
   <div class="sf-wrap">
     <!-- HERO -->
