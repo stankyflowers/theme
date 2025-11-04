@@ -1,0 +1,225 @@
+{% comment %}
+StankyFlowers – Home (MVP) Section
+Hero + Value Props + Social Proof + Product CTA + Newsletter + FAQ
+Brand colors: #9B5DE5 (purple), #39FF14 (green)
+Font: Bangers (optional load in theme.liquid)
+{% endcomment %}
+
+<section class="sf-home">
+  <style>
+    .sf-home { --sf-purple:#9B5DE5; --sf-green:#39FF14; --sf-dark:#101010; --sf-light:#f7f7f7; }
+    .sf-wrap { max-width: 1200px; margin: 0 auto; padding: clamp(20px, 4vw, 48px); }
+    .sf-hero { display:grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items:center; }
+    @media (max-width: 900px){ .sf-hero{ grid-template-columns: 1fr; } }
+    .sf-badge { display:inline-flex; gap:8px; align-items:center; background:var(--sf-dark); color:#fff; padding:8px 12px; border-radius:999px; font-weight:600; }
+    .sf-title { font-size: clamp(36px, 6vw, 64px); line-height:1.0; margin: 8px 0 12px; letter-spacing: -0.02em; }
+    .sf-title .accent { color: var(--sf-green); text-shadow: 0 2px 0 rgba(0,0,0,.12); }
+    .sf-sub { font-size: clamp(16px, 2.4vw, 20px); color:#333; }
+    .sf-cta { display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+    .sf-btn { appearance:none; border:none; padding:14px 20px; border-radius:14px; font-weight:800; cursor:pointer; }
+    .sf-btn--primary { background: var(--sf-green); color:#081208; box-shadow: 0 8px 20px rgba(57,255,20,.25); }
+    .sf-btn--ghost { background: transparent; color:#111; border:2px solid #111; }
+    .sf-hero-media img { width:100%; height:auto; border-radius:20px; box-shadow: 0 18px 40px rgba(0,0,0,.15); }
+    .sf-kpis { display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top:18px; }
+    @media (max-width: 700px){ .sf-kpis{ grid-template-columns:1fr 1fr; } }
+    .sf-kpi { background: var(--sf-light); padding:14px; border-radius:14px; display:flex; gap:10px; align-items:center; }
+    .sf-kpi .dot{ width:10px; height:10px; background:var(--sf-green); border-radius:999px; }
+    .sf-values { display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:36px; }
+    @media (max-width: 900px){ .sf-values{ grid-template-columns:1fr; } }
+    .sf-card { background:#fff; border:1px solid #eee; border-radius:18px; padding:20px; }
+    .sf-card h3{ margin:0 0 6px; }
+    .sf-social { margin-top:36px; background:#111; color:#fff; border-radius:18px; padding:22px; display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; }
+    .sf-stars{ color:#FFD54A; letter-spacing:2px; font-size:18px; }
+    .sf-product { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:center; }
+    @media (max-width: 900px){ .sf-product{ grid-template-columns:1fr; } }
+    .sf-product .pnl{ background:var(--sf-light); padding:18px; border-radius:18px; }
+    .sf-note { font-size:12px; color:#666; margin-top:8px; }
+    .sf-news { margin-top:36px; background:linear-gradient(135deg, var(--sf-purple), var(--sf-green)); border-radius:18px; padding:22px; color:#081208; }
+    .sf-news form{ display:flex; gap:10px; flex-wrap:wrap; }
+    .sf-news input{ flex:1; min-width:220px; padding:14px 12px; border-radius:12px; border:none; }
+    .sf-news button{ padding:14px 18px; border:none; border-radius:12px; font-weight:800; background:#081208; color:#fff; }
+    .sf-faq { margin-top:36px; }
+    .sf-faq details { border:1px solid #e8e8e8; border-radius:14px; padding:14px 16px; margin-bottom:12px; background:#fff; }
+    .sf-faq summary{ cursor:pointer; font-weight:700; }
+    .sf-legal{ margin-top:14px; font-size:12px; color:#666; }
+  </style>
+
+  <div class="sf-wrap">
+    <!-- HERO -->
+    <div class="sf-hero">
+      <div>
+        {% if section.settings.badge != blank %}
+          <div class="sf-badge">✅ {{ section.settings.badge }}</div>
+        {% endif %}
+        <h1 class="sf-title">
+          {{ section.settings.title | escape }}
+          <span class="accent">{{ section.settings.title_accent | escape }}</span>
+        </h1>
+        <p class="sf-sub">{{ section.settings.subtitle }}</p>
+
+        <div class="sf-cta">
+          {% if section.settings.primary_product != blank %}
+            <a class="sf-btn sf-btn--primary" href="{{ section.settings.primary_product.url }}">
+              {{ section.settings.primary_label }}
+            </a>
+          {% endif %}
+          {% if section.settings.secondary_link != blank %}
+            <a class="sf-btn sf-btn--ghost" href="{{ section.settings.secondary_link }}">
+              {{ section.settings.secondary_label }}
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="sf-kpis">
+          {% for block in section.blocks %}
+            {% if block.type == 'kpi' %}
+              <div class="sf-kpi">
+                <div class="dot"></div>
+                <div>
+                  <strong>{{ block.settings.kpi_title }}</strong><br>
+                  <small>{{ block.settings.kpi_sub }}</small>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="sf-hero-media">
+        {% if section.settings.hero_image != blank %}
+          <img src="{{ section.settings.hero_image | image_url: width: 1280 }}" alt="Hero">
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- VALUE CARDS -->
+    <div class="sf-values">
+      {% for block in section.blocks %}
+        {% if block.type == 'value' %}
+          <div class="sf-card">
+            <h3>{{ block.settings.value_title }}</h3>
+            <p>{{ block.settings.value_body }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- SOCIAL PROOF -->
+    <div class="sf-social">
+      <div>
+        <div class="sf-stars">★★★★★</div>
+        <strong>{{ section.settings.social_headline }}</strong>
+        <div><small>{{ section.settings.social_sub }}</small></div>
+      </div>
+      {% if section.settings.review_1 != blank %}
+        <div>“{{ section.settings.review_1 }}”</div>
+      {% endif %}
+      {% if section.settings.review_2 != blank %}
+        <div>“{{ section.settings.review_2 }}”</div>
+      {% endif %}
+    </div>
+
+    <!-- PRODUCT PANEL -->
+    <div class="sf-product">
+      <div class="pnl">
+        <h3>{{ section.settings.product_title }}</h3>
+        <p>{{ section.settings.product_blurb }}</p>
+        {% if section.settings.primary_product != blank %}
+          {% assign p = section.settings.primary_product %}
+          <a class="sf-btn sf-btn--primary" href="{{ p.url }}">Buy {{ p.title }}</a>
+          <div class="sf-note">Active SKUs: Small 90 g ($11.99), Large 200 g ($24.99)</div>
+          <div class="sf-note">Formulated in USA • Safe on Glass & Accessories • Rinses Clean</div>
+        {% endif %}
+      </div>
+      <div class="pnl">
+        {% if section.settings.product_image != blank %}
+          <img src="{{ section.settings.product_image | image_url: width: 1200 }}" alt="StankyPowder" style="width:100%; border-radius:14px;">
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="sf-news">
+      <h3>{{ section.settings.news_title }}</h3>
+      <p>{{ section.settings.news_sub }}</p>
+      {%- form 'customer', id: 'sf-newsletter' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" required placeholder="Enter your email">
+        <button type="submit">Join</button>
+      {%- endform -%}
+      <div class="sf-legal">Nothing for sale • 21+ (FL MMJ only) • Educational/Review content • No consumption shown</div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="sf-faq">
+      <h3>FAQ</h3>
+      {% for block in section.blocks %}
+        {% if block.type == 'faq' %}
+          <details>
+            <summary>{{ block.settings.q }}</summary>
+            <div>{{ block.settings.a }}</div>
+          </details>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% schema %}
+  {
+    "name": "StankyFlowers: Home (MVP)",
+    "settings": [
+      { "type":"text", "id":"badge", "label":"Hero badge", "default":"Premium Glass & Water Pipe Cleaner" },
+      { "type":"text", "id":"title", "label":"Hero title (left)", "default":"Meet " },
+      { "type":"text", "id":"title_accent", "label":"Hero title accent (green)", "default":"StankyPowder" },
+      { "type":"richtext", "id":"subtitle", "label":"Hero subtext", "default":"<p>Faster cleans. Less scrubbing. Rinses clean. Designed for glass & accessories.</p>" },
+      { "type":"image_picker", "id":"hero_image", "label":"Hero image" },
+      { "type":"product", "id":"primary_product", "label":"Primary product" },
+      { "type":"text", "id":"primary_label", "label":"Primary button label", "default":"Shop StankyPowder" },
+      { "type":"url", "id":"secondary_link", "label":"Secondary link" },
+      { "type":"text", "id":"secondary_label", "label":"Secondary button label", "default":"How it works" },
+
+      { "type":"text", "id":"social_headline", "label":"Social proof headline", "default":"4.9/5 from early testers" },
+      { "type":"text", "id":"social_sub", "label":"Social proof sub", "default":"Real results from real glass owners" },
+      { "type":"text", "id":"review_1", "label":"Review #1", "default":"Cleaned my rig in minutes. Smells neutral and rinses fast." },
+      { "type":"text", "id":"review_2", "label":"Review #2", "default":"Way easier than salt + iso. Bought the Large size immediately." },
+
+      { "type":"text", "id":"product_title", "label":"Product panel title", "default":"StankyPowder" },
+      { "type":"richtext", "id":"product_blurb", "label":"Product blurb", "default":"<p>Hero ingredients: Sodium Coco Sulfate (foam lift), Citric Acid (mineral dissolve), Activated Charcoal (odor neutralizing). Includes scooper + funnel.</p>" },
+      { "type":"image_picker", "id":"product_image", "label":"Product image" },
+
+      { "type":"text", "id":"news_title", "label":"Newsletter title", "default":"Get early drops & cleaning tips" },
+      { "type":"text", "id":"news_sub", "label":"Newsletter sub", "default":"Exclusive deals, how-to videos, and behind-the-scenes lab notes." }
+    ],
+    "blocks": [
+      {
+        "type":"kpi",
+        "name":"Hero KPI",
+        "limit": 3,
+        "settings": [
+          { "type":"text", "id":"kpi_title", "label":"Title", "default":"20–30 cleans / Small" },
+          { "type":"text", "id":"kpi_sub", "label":"Subtitle", "default":"Up to 50 cleans / Large" }
+        ]
+      },
+      {
+        "type":"value",
+        "name":"Value Card",
+        "limit": 6,
+        "settings": [
+          { "type":"text", "id":"value_title", "label":"Title", "default":"Rinses Clean" },
+          { "type":"textarea", "id":"value_body", "label":"Body", "default":"No filmy residue. Leaves glass crystal clear." }
+        ]
+      },
+      {
+        "type":"faq",
+        "name":"FAQ item",
+        "limit": 8,
+        "settings": [
+          { "type":"text", "id":"q", "label":"Question", "default":"Is it safe for glass?" },
+          { "type":"textarea", "id":"a", "label":"Answer", "default":"Yes — formulated for glass & accessories. Avoid prolonged contact with natural stone or unfinished metals." }
+        ]
+      }
+    ],
+    "presets": [{ "name":"StankyFlowers: Home (MVP)" }]
+  }
+  {% endschema %}
+</section>
