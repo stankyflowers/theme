@@ -1,33 +1,35 @@
-/* ==== StankyFlowers brand layer ==== */
-:root{
-  --sf-purple:#9B5DE5;
-  --sf-green:#39FF14;
-}
+/* ===================================
+   StankyFlowers Custom Overrides
+   =================================== */
 
-/* Option A: hard-assign fonts to headings + body */
-h1,h2,h3,.h0,.h1,.h2,.h3{
-  font-family:'Bangers',system-ui,sans-serif !important;
-  letter-spacing:.5px;
-}
-body{
-  font-family:'Montserrat',system-ui,sans-serif !important;
-}
+@import url('design-tokens.css');
+@import url('typography.css');
+@import url('components.css');
 
-/* Option B (Dawn/Origin variables): uncomment to override theme vars site-wide */
-/*
-:root{
-  --font-heading-family: "Bangers",system-ui,sans-serif;
-  --font-body-family: "Montserrat",system-ui,sans-serif;
-}
-*/
-
+/* Button Overrides */
 .button--primary,
-.shopify-payment-button__button{
-  background:linear-gradient(90deg,var(--sf-purple),var(--sf-green));
-  border:0;
-  color:#000;
+.shopify-payment-button__button {
+  background: linear-gradient(90deg, var(--stanky-purple), var(--stanky-green)) !important;
+  border: 0;
+  color: #000 !important;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
-.price__badge-sale,.badge{ background:var(--sf-green); color:#000; border:none; }
 
-/* Small polish */
-.section-title{ letter-spacing:.5px; }
+/* Badge Overrides */
+.price__badge--sale,
+.badge {
+  background: var(--stanky-green);
+  color: #000;
+  border-radius: var(--radius-sm);
+  border: none;
+}
+
+/* Section Title Polish */
+.section-title,
+.stanky-section-title {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
