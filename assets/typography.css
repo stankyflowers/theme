@@ -1,0 +1,20 @@
+/* ========================================
+   StankyFlowers Design System - Typography
+   ======================================== */
+
+/* Global font application */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Utility classes */
+.stanky-section-title {
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
