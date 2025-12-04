@@ -1,88 +1,270 @@
 /* ===================================
-   StankyFlowers Component System
+   StankyFlowers UI Components v1
+   Scope: Small, composable primitives
    =================================== */
 
-/* Primary CTA Button */
-.stanky-btn-primary {
-  background: linear-gradient(90deg, var(--stanky-purple), var(--stanky-green));
-  border: 0;
-  color: #000;
-  border-radius: var(--radius-md);
-  padding: 12px 24px;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: var(--shadow-light);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
+/* ============================
+   PILL FILTERS / CHIPS
+   ============================ */
 
-.stanky-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
-}
-
-/* Secondary Button */
-.stanky-btn-secondary {
-  background: transparent;
-  border: 2px solid var(--stanky-purple);
-  color: var(--stanky-purple);
-  border-radius: var(--radius-md);
-  padding: 10px 22px;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Badges (sale, labels, etc.) */
-.stanky-badge {
-  background: var(--stanky-green);
-  color: #000;
-  border-radius: var(--radius-sm);
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Cards (product, feature, testimonial) */
-.stanky-card {
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-light);
-  overflow: hidden;
-  background: #050509;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.stanky-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-heavy);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Tag-like pill */
 .stanky-pill {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(155, 93, 229, 0.12);
-  color: var(--stanky-purple);
-  font-size: 0.75rem;
-  font-weight: 600;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 10, 18, 0.92);
+  color: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 140ms ease-out,
+    border-color 140ms ease-out,
+    color 140ms ease-out,
+    transform 120ms ease-out;
 }
 
-/* Section wrapper */
-.stanky-section {
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-light);
-  padding: 24px;
-  background: radial-gradient(circle at top left,
-      rgba(155, 93, 229, 0.12),
-      transparent 60%);
+.stanky-pill:hover {
+  background: rgba(20, 20, 32, 0.98);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
 }
+
+.stanky-pill--active {
+  background: linear-gradient(
+    90deg,
+    var(--stanky-purple),
+    var(--stanky-green)
+  );
+  color: #000;
+  border-color: transparent;
+}
+
+.stanky-pill--ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.stanky-pill--outline {
+  background: transparent;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.stanky-pill__icon {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Horizontal pill row (e.g. filters / tags) */
+.stanky-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ============================
+   BUTTON PRIMITIVES
+   (Use in sections / custom blocks;
+    global .button overrides live in custom.css)
+   ============================ */
+
+.stanky-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-md, 999px);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+  transition:
+    background 160ms ease-out,
+    border-color 160ms ease-out,
+    color 160ms ease-out,
+    box-shadow 160ms ease-out,
+    transform 120ms ease-out;
+}
+
+.stanky-button--primary {
+  background: linear-gradient(
+    90deg,
+    var(--stanky-purple),
+    var(--stanky-green)
+  );
+  color: #000;
+  box-shadow:
+    0 14px 26px rgba(0, 0, 0, 0.65),
+    0 0 18px rgba(57, 255, 20, 0.35);
+}
+
+.stanky-button--primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 18px 32px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(57, 255, 20, 0.45);
+}
+
+.stanky-button--secondary {
+  background: rgba(10, 10, 18, 0.98);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.stanky-button--secondary:hover {
+  background: rgba(18, 18, 30, 1);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.stanky-button--ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.stanky-button--ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.stanky-button--icon {
+  padding-inline: 1rem;
+}
+
+.stanky-button__icon {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================
+   BADGES / LABEL TAGS
+   ============================ */
+
+.stanky-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  background: rgba(12, 12, 20, 0.98);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.stanky-badge--success {
+  background: rgba(57, 255, 20, 0.14);
+  border-color: rgba(57, 255, 20, 0.7);
+  color: rgba(200, 255, 200, 0.96);
+}
+
+.stanky-badge--warning {
+  background: rgba(255, 191, 71, 0.11);
+  border-color: rgba(255, 191, 71, 0.8);
+  color: rgba(255, 223, 166, 0.96);
+}
+
+.stanky-badge--sale {
+  background: linear-gradient(
+    90deg,
+    var(--stanky-purple),
+    var(--stanky-green)
+  );
+  color: #000;
+}
+
+.stanky-badge__dot {
+  width: 0.36rem;
+  height: 0.36rem;
+  border-radius: 999px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* For stacking small badges inline with text (e.g. product meta) */
+.stanky-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* ============================
+   META TEXT / EYEBROWS
+   ============================ */
+
+/* Tiny label above titles – pairs with .stanky-section-title + .stanky-eyebrow from custom.css */
+.stanky-meta,
+.stanky-kicker {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+/* Subtle product meta line (e.g. “Sativa • 28g • Indoor”) */
+.stanky-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.stanky-meta-row span::after {
+  content: '•';
+  margin-inline: 0.35rem;
+  opacity: 0.45;
+}
+
+.stanky-meta-row span:last-child::after {
+  content: '';
+  margin: 0;
+}
+
+/* ============================
+   SIMPLE STACK / CLUSTER HELPERS
+   (Useful for quick layout inside sections)
+   ============================ */
+
+.stanky-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stanky-stack--lg {
+  gap: 1.25rem;
+}
+
+.stanky-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stanky-row--space-between {
+  justify-content: space-between;
+}
+
+/* End of v1 components.css */
