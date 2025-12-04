@@ -1,0 +1,88 @@
+/* ===================================
+   StankyFlowers Component System
+   =================================== */
+
+/* Primary CTA Button */
+.stanky-btn-primary {
+  background: linear-gradient(90deg, var(--stanky-purple), var(--stanky-green));
+  border: 0;
+  color: #000;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.stanky-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Secondary Button */
+.stanky-btn-secondary {
+  background: transparent;
+  border: 2px solid var(--stanky-purple);
+  color: var(--stanky-purple);
+  border-radius: var(--radius-md);
+  padding: 10px 22px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Badges (sale, labels, etc.) */
+.stanky-badge {
+  background: var(--stanky-green);
+  color: #000;
+  border-radius: var(--radius-sm);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Cards (product, feature, testimonial) */
+.stanky-card {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+  background: #050509;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.stanky-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-heavy);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Tag-like pill */
+.stanky-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(155, 93, 229, 0.12);
+  color: var(--stanky-purple);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Section wrapper */
+.stanky-section {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-light);
+  padding: 24px;
+  background: radial-gradient(circle at top left,
+      rgba(155, 93, 229, 0.12),
+      transparent 60%);
+}
