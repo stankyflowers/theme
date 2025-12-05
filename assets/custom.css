@@ -1,35 +1,276 @@
 /* ===================================
    StankyFlowers Custom Overrides
+   - Imports
+   - Buttons & CTAs
+   - Badges & Pills
+   - Section Titles
+   - Card / Surface Utilities
    =================================== */
 
 @import url('design-tokens.css');
 @import url('typography.css');
 @import url('components.css');
 
-/* Button Overrides */
+/* ============================
+   BUTTONS & CTAs
+   ============================ */
+
 .button--primary,
-.shopify-payment-button__button {
-  background: linear-gradient(90deg, var(--stanky-purple), var(--stanky-green)) !important;
+.shopify-payment-button__button,
+.shopify-challenge__button {
+  background: linear-gradient(
+    90deg,
+    var(--stanky-purple),
+    var(--stanky-green)
+  ) !important;
   border: 0;
   color: #000 !important;
   border-radius: var(--radius-md);
   font-family: var(--font-heading);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.06em;
+  padding-inline: 1.75rem;
+  padding-block: 0.9rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.45);
+  transition:
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out,
+    filter 160ms ease-out;
 }
 
-/* Badge Overrides */
+.button--primary:hover,
+.shopify-payment-button__button:hover,
+.shopify-challenge__button:hover {
+  transform: translateY(-1px) scale(1.01);
+  filter: brightness(1.05);
+  box-shadow: 0 0.9rem 2rem rgba(0, 0, 0, 0.55);
+}
+
+.button--primary:active,
+.shopify-payment-button__button:active,
+.shopify-challenge__button:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: 0 0.3rem 0.9rem rgba(0, 0, 0, 0.5);
+}
+
+/* “Ghost” / Secondary buttons that still feel on-brand */
+.button--secondary {
+  background: transparent;
+  color: var(--stanky-green);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(57, 255, 20, 0.5);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-inline: 1.5rem;
+  padding-block: 0.8rem;
+  transition:
+    background-color 160ms ease-out,
+    color 160ms ease-out,
+    border-color 160ms ease-out,
+    transform 160ms ease-out;
+}
+
+.button--secondary:hover {
+  background: rgba(57, 255, 20, 0.08);
+  border-color: rgba(57, 255, 20, 0.8);
+  transform: translateY(-1px);
+}
+
+/* Links styled like text CTAs */
+.stanky-link-inline {
+  position: relative;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+.stanky-link-inline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.15rem;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--stanky-purple),
+    var(--stanky-green)
+  );
+  opacity: 0.7;
+  transition: opacity 160ms ease-out, transform 160ms ease-out;
+}
+
+.stanky-link-inline:hover::after {
+  opacity: 1;
+  transform: translateY(1px);
+}
+
+/* ============================
+   BADGES & PILLS
+   ============================ */
+
 .price__badge--sale,
 .badge {
   background: var(--stanky-green);
   color: #000;
   border-radius: var(--radius-sm);
   border: none;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
 }
 
-/* Section Title Polish */
+/* Generic pill for things like “BEST CLEANER”, “NEW”, etc. */
+.stanky-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(155, 93, 229, 0.16);
+  border: 1px solid rgba(155, 93, 229, 0.7);
+  color: #fdfdfd;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.68rem;
+}
+
+.stanky-pill--green {
+  background: rgba(57, 255, 20, 0.12);
+  border-color: rgba(57, 255, 20, 0.8);
+  color: #eaffea;
+}
+
+/* ============================
+   SECTION TITLES
+   ============================ */
+
 .section-title,
 .stanky-section-title {
-  letter-spacing: 0.5px;
+  font-family: var(--font-heading);
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.section-title::before,
+.stanky-section-title::before {
+  content: '';
+  display: block;
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--stanky-purple),
+    var(--stanky-green)
+  );
+}
+
+/* Optional subtle neon glow around key headings */
+.stanky-section-title--glow {
+  text-shadow:
+    0 0 8px rgba(155, 93, 229, 0.7),
+    0 0 14px rgba(57, 255, 20, 0.6);
+}
+
+/* ============================
+   CARD / SURFACE UTILITIES
+   ============================ */
+
+/* Soft surface for sections that should pop off the background */
+.stanky-soft-surface {
+  border-radius: var(--radius-lg, 1.25rem);
+  background: radial-gradient(
+      circle at top left,
+      rgba(155, 93, 229, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(57, 255, 20, 0.08),
+      transparent 55%
+    ),
+    rgba(8, 8, 15, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(0, 0, 0, 0.6) inset;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+/* Generic card look for tiles (can be added via “custom class” in editor) */
+.stanky-card {
+  border-radius: var(--radius-md);
+  background: rgba(9, 9, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.7);
+  padding: 1.25rem;
+  transition:
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out,
+    border-color 160ms ease-out;
+}
+
+.stanky-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(57, 255, 20, 0.6);
+  box-shadow:
+    0 24px 40px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(57, 255, 20, 0.28);
+}
+
+/* Helper for product tiles if you want them tighter */
+.stanky-card--compact {
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Halo glow utility you can drop onto images or wrappers */
+.stanky-glow-ring {
+  position: relative;
+}
+
+.stanky-glow-ring::after {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  border-radius: inherit;
+  border: 1px solid rgba(155, 93, 229, 0.55);
+  box-shadow:
+    0 0 32px rgba(155, 93, 229, 0.7),
+    0 0 52px rgba(57, 255, 20, 0.5);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ============================
+   LAYOUT SPACING HELPERS
+   ============================ */
+
+/* Use on sections that should breathe more (hero / key narrative blocks) */
+.stanky-section--xl {
+  padding-block: clamp(3rem, 9vw, 4.5rem);
+}
+
+/* Tighter sections for secondary content */
+.stanky-section--sm {
+  padding-block: 1.5rem;
+}
+
+/* Small utility for label text above headings (eyebrow) */
+.stanky-eyebrow {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
 }
