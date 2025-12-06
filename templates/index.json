@@ -15,14 +15,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "STANKYPOWDER           -            Premium Glass & Water Pipe Cleaner",
+            "heading": "CRYSTAL CLEAR. EFFORTLESSLY CLEAN.",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Natural formula. Powerful results. Safe on glass, accessories & more.",
+            "text": "Premium glass care with our natural formula. Get spotless results without harsh chemicals.",
             "text_style": "body"
           }
         },
@@ -46,7 +46,7 @@
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Preview.jpg",
-        "image_overlay_opacity": 20,
+        "image_overlay_opacity": 60,
         "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
