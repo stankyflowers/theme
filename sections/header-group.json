@@ -39,7 +39,8 @@
       "type": "header",
       "custom_css": [
         "/* Hide search icon */.header__search {display: none !important;}",
-        "/* Fix logo text wrapping */.header__heading-link {white-space: nowrap; font-size: 18px;}"
+        "/* Fix logo text wrapping */.header__heading-link {white-space: nowrap; font-size: 18px;}",
+        "/* Fix mobile menu font */.mobile-nav__link,.header__menu-item {font-family: Assistant, sans-serif !important; font-weight: 400 !important;}"
       ],
       "settings": {
         "logo_position": "middle-left",
