@@ -1,0 +1,92 @@
+{{ 'section-stanky-trust-bar.css' | asset_url | stylesheet_tag }}
+
+<div class="stanky-trust-bar" {{ block.shopify_attributes }}>
+  <div class="trust-bar__marquee">
+    <div class="trust-bar__track">
+      {% for i in (1..3) %}
+        <div class="trust-bar__item">Natural Plant-Based Formula</div>
+        <div class="trust-bar__separator">|</div>
+        <div class="trust-bar__item">20+ Full Cleanings</div>
+        <div class="trust-bar__separator">|</div>
+        <div class="trust-bar__item">Safe on All Glass</div>
+        <div class="trust-bar__separator">|</div>
+        <div class="trust-bar__item">Eco-Friendly Powder</div>
+        <div class="trust-bar__separator">|</div>
+        <div class="trust-bar__item">No Harsh Chemicals</div>
+        <div class="trust-bar__separator">|</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .stanky-trust-bar {
+    background: var(--color-background);
+    padding: 1rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(var(--color-foreground), 0.1);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+  }
+
+  .trust-bar__marquee {
+    display: flex;
+    width: 100%;
+  }
+
+  .trust-bar__track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  .trust-bar__item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .trust-bar__separator {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.3;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .trust-bar__item {
+      padding: 0 1rem;
+      font-size: 0.75rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Trust Bar Settings"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar"
+    }
+  ]
+}
+{% endschema %}
