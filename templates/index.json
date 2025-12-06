@@ -43,10 +43,13 @@
         "text",
         "button"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "/* Make hero text readable with background */.banner__content {background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 8px;}",
+        ".banner__heading, .banner__text {color: #ffffff !important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);}"
+      ],
       "settings": {
         "image": "shopify://shop_images/Preview.jpg",
-        "image_overlay_opacity": 60,
+        "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
