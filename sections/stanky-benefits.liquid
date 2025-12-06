@@ -1,0 +1,110 @@
+<div class="stanky-benefits page-width">
+  <div class="benefits-grid">
+    <div class="benefit-item">
+      <h3 class="stanky-section-title h2">{{ section.settings.benefit_1_title }}</h3>
+      <p class="body">{{ section.settings.benefit_1_text }}</p>
+    </div>
+    <div class="benefit-item">
+      <h3 class="stanky-section-title h2">{{ section.settings.benefit_2_title }}</h3>
+      <p class="body">{{ section.settings.benefit_2_text }}</p>
+    </div>
+    <div class="benefit-item">
+      <h3 class="stanky-section-title h2">{{ section.settings.benefit_3_title }}</h3>
+      <p class="body">{{ section.settings.benefit_3_text }}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .stanky-benefits {
+    padding: 6rem 0;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .benefit-item {
+    text-align: center;
+  }
+
+  .benefit-item h3 {
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .stanky-benefits {
+      padding: 4rem 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Benefit 1"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Title",
+      "default": "POWERFUL CLEAN"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1_text",
+      "label": "Text",
+      "default": "Cuts through residue and buildup with natural cleaning power that actually works."
+    },
+    {
+      "type": "header",
+      "content": "Benefit 2"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Title",
+      "default": "SAFE FORMULA"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2_text",
+      "label": "Text",
+      "default": "Plant-based ingredients that are gentle on your glass but tough on grime."
+    },
+    {
+      "type": "header",
+      "content": "Benefit 3"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Title",
+      "default": "EASY TO USE"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3_text",
+      "label": "Text",
+      "default": "Simple powder-to-water formula. Shake, wait, rinse. That's it."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits"
+    }
+  ]
+}
+{% endschema %}
