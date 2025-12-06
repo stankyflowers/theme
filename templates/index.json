@@ -44,8 +44,7 @@
         "button"
       ],
       "custom_css": [
-        "/* Make hero text readable with background */.banner__content {background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 8px;}",
-        ".banner__heading, .banner__text {color: #ffffff !important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);}"
+        "/* Subtle text readability improvements */.banner__heading, .banner__text {color: #ffffff !important; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);}"
       ],
       "settings": {
         "image": "shopify://shop_images/Preview.jpg",
