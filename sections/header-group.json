@@ -37,6 +37,10 @@
     },
     "header": {
       "type": "header",
+      "custom_css": [
+        "/* Hide search icon */.header__search {display: none !important;}",
+        "/* Fix logo text wrapping */.header__heading-link {white-space: nowrap; font-size: 18px;}"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
