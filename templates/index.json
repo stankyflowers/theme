@@ -58,6 +58,11 @@
         "show_text_below": false
       }
     },
+    "stanky_trust_bar_UwN3z7": {
+      "type": "stanky-trust-bar",
+      "name": "Trust Bar",
+      "settings": {}
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -225,6 +230,7 @@
   },
   "order": [
     "image_banner",
+    "stanky_trust_bar_UwN3z7",
     "rich_text",
     "featured_collection",
     "collage",
