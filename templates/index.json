@@ -74,11 +74,23 @@
         "benefit_3_title": "EASY TO USE",
         "benefit_3_text": "Simple powder-to-water formula. Shake, wait, rinse. That's it."
       }
+    },
+    "stanky_guarantee_hxJVR8": {
+      "type": "stanky-guarantee",
+      "name": "Guarantee",
+      "settings": {
+        "heading": "30-DAY SATISFACTION GUARANTEE",
+        "description": "Try StankyPowder risk-free. If you're not completely satisfied, we'll refund your purchase—no questions asked.",
+        "bullet_1": "Money Back Guarantee",
+        "bullet_2": "Free Shipping on Orders over $50",
+        "bullet_3": "Nothing to lose (other than stubborn stains)"
+      }
     }
   },
   "order": [
     "image_banner",
     "stanky_trust_bar_UwN3z7",
-    "stanky_benefits_c9VirA"
+    "stanky_benefits_c9VirA",
+    "stanky_guarantee_hxJVR8"
   ]
 }
